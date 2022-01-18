@@ -20,5 +20,12 @@ public class InvoiceGenerator {
 		}
 		return totalFare;
 	}
-
+	public InvoiceSummary calculateFareReturnObject(Ride[] rides) {
+		
+		double totalFare = 0;
+		for(Ride ride : rides) {
+			totalFare = totalFare + this.totalFare(ride.distance, ride.time);
+		}
+		return new InvoiceSummary(rides.length, totalFare);
+	}
 }
