@@ -11,7 +11,14 @@ public class InvoiceGenerator {
 		double fare = distance *MIN_COSY_PER_KM + time * MIN_COST_PER_MINUTE;
 		double totalCabFare = Math.max(MIN_CAB_FARE, fare);
 		return totalCabFare;
+	}
+	public double calculateFare(Ride[] rides) {
 		
+		double totalFare = 0;
+		for(Ride ride : rides) {
+			totalFare = totalFare + this.totalFare(ride.distance, ride.time);
+		}
+		return totalFare;
 	}
 
 }
