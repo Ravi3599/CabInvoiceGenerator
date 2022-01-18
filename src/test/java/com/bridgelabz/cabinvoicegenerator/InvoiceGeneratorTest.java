@@ -18,25 +18,27 @@ public class InvoiceGeneratorTest {
 	}
 	@Test
 	public void whenDistanceAndTimeGiven_ShouldReturnTotalFare() {
+		String type ="Normal";
 		double distance=1;
 		int time = 6;
-		double fare = generator.totalFare(distance,time);
+		double fare = generator.totalFare(distance,time,type);
 		assertEquals(16,fare,0.0);
 	}
 	@Test
 	public void whenDistanceAndTimeGiven_WhenTotalFareLessThan5_ShouldReturnMinFare() {
+		String type ="Normal";
 		double distance=0.1;
 		int time = 2;
-		double fare = generator.totalFare(distance,time);
+		double fare = generator.totalFare(distance,time,type);
 		assertEquals(5,fare,0.0);
 	}
 	@Test
 	public void givenMultipleRides_ShouldReturnInvoice() {
-
+		String type ="Premium";
 		Ride[] rides = {new Ride(2.0, 5), 
-						new Ride(0.1, 1)};
-		double totalFare = generator.calculateFare(rides);
-		assertEquals(30, totalFare, 0.0);
+						new Ride(1.0, 1)};
+		double totalFare = generator.calculateFare(rides,type);
+		assertEquals(60, totalFare, 0.0);
 	}
 	@Test
 	public void givenMultipleRides_ShouldReturnInvoiceSummary() {
