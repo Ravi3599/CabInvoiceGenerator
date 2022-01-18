@@ -1,5 +1,7 @@
 package com.bridgelabz.cabinvoicegenerator;
 
+import java.util.ArrayList;
+
 public class InvoiceGenerator {
 
 	private static final double MIN_COSY_PER_KM = 10;
@@ -20,12 +22,12 @@ public class InvoiceGenerator {
 		}
 		return totalFare;
 	}
-	public InvoiceSummary calculateFareReturnObject(Ride[] rides) {
+	public InvoiceSummary calculateFareReturnObject(ArrayList<Ride> rides) {
 		
 		double totalFare = 0;
 		for(Ride ride : rides) {
 			totalFare = totalFare + this.totalFare(ride.distance, ride.time);
 		}
-		return new InvoiceSummary(rides.length, totalFare);
+		return new InvoiceSummary(rides.size(), totalFare);
 	}
 }
